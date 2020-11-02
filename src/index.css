@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.pagination > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination > ul > li {
+  display: inline;
+  cursor: pointer; 
+}
+
+.pagination > ul > li:hover {
+  color: red;
+}
+
