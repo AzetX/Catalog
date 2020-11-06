@@ -18,12 +18,15 @@ code {
   padding: 0;
 }
 
-.pagination > ul > li {
+.pagination> li {
   display: inline;
   cursor: pointer; 
 }
 
-.pagination > ul > li:hover {
+.pagination > li:hover {
   color: red;
 }
 
+img {
+  max-width: 100%;
+}
