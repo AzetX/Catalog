@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from 'react'
 
 
-function FindBeers({findBeer}){
-    
+function FindBeers({findBeer, paginate}){
+    const [currentPage, setCurrentPage] = useState(1)//current page
+    const [productsPerPage, setProductsPerPage] = useState(6) 
+
+    const indexOfLastProd = currentPage * productsPerPage//last post
+    const indexOfFirstProd = indexOfLastProd - productsPerPage //first post
+    const currentProd = findBeer.slice(indexOfFirstProd, indexOfLastProd)//kol product on page
+        const pagesNumbers = []
+  
+        for(let i = 1; i <= Math.ceil(currentProd.length / productsPerPage); i++){
+            pagesNumbers.push(i)
+       
+        } 
+       console.log(pagesNumbers)
+
+        
     return (
+     
         <div className="catalog">
             {
-                   findBeer.map(beer => 
+                   currentProd.map(beer => 
                     <div className="card" key={ beer.id }> 
                         <div className="beer-name"> { beer.name } </div>
                         <div className="beer-img"> <img src={ beer.image_url }/> </div>
@@ -14,14 +29,15 @@ function FindBeers({findBeer}){
                     </div>)
             }
         </div>
+     
     )
 
 }
     
 
-function CatalogBeers({productsPagiante, value, findBeer}) {
+function CatalogBeers({productsPagiante, value, findBeer, paginate}) {
     if(value!=""){
-        return (<FindBeers findBeer={findBeer}/>)
+        return (<FindBeers findBeer={findBeer} paginate={paginate}/>)
     }
    return (   
    <div className="catalog">

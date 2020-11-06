@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Modal from './Modal_Form'
 
 
 
@@ -11,24 +12,28 @@ import React from 'react'
 // }
 
 
-function Basket() {
-    return ( 
-        <button className="btn" onClick={'Basket'}>Basket</button> 
-    )
-}
+// function FormRegistation() {
+   
+//     return ( 
+//         <button className="btn" onClick={console.log('add')}>Registration</button> 
+//     )
+// }
 
-function FormRegistation() {
+function Basket() {
     return (
-        <button className="btn" onClick={'Registration'}>Registration</button>
+        <button className="btn">Basket</button>
     )
 }
 
 
 export default function Buttons () {
+    const [isOpen, setIsOpen] = useState(false)
+    
     return (
     <div className ="buttons">
-        <FormRegistation/>
         <Basket/>
+            <button className="btn" onClick={()=>setIsOpen(true)}>Registration</button>
+            <Modal open={isOpen} onClose={() => setIsOpen(false)}>adadada</Modal>
     </div>
     )
 }
