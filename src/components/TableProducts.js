@@ -16,7 +16,6 @@ function FindBeers({findBeer, paginate}){
         } 
        console.log(pagesNumbers)
 
-        
     return (
      
         <div className="catalog">
@@ -29,12 +28,9 @@ function FindBeers({findBeer, paginate}){
                     </div>)
             }
         </div>
-     
     )
-
 }
     
-
 function CatalogBeers({productsPagiante, value, findBeer, paginate}) {
     if(value!=""){
         return (<FindBeers findBeer={findBeer} paginate={paginate}/>)
@@ -52,9 +48,7 @@ function CatalogBeers({productsPagiante, value, findBeer, paginate}) {
         }
     </div>
 )
- 
 }
-
 
 export default function TableProducts( { productsPagiante, productsFind, loading, value, paginate} ) {
     if(loading) {
@@ -62,17 +56,9 @@ export default function TableProducts( { productsPagiante, productsFind, loading
     }
 
     {
-    // console.log('Filter:', productsPagiante)
-    // console.log('All:',productsFind)
- 
-    
     const findBeer = productsFind.filter(beer => beer.name.toLowerCase().includes(value.toLowerCase()))
-    // console.log(findBeer)
     return (
         <CatalogBeers productsPagiante={productsPagiante} value={value} findBeer={findBeer}/>
-   )
-    
+   )  
 }
-
-
 }
