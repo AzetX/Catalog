@@ -1,23 +1,19 @@
 import React, {useState} from 'react'
-import Modal from './Modal_Form'
-
-
-
-function Basket() {
-    return (
-        <button className="btn">Basket</button>
-    )
-}
+import ModalRegistration from './Registration_Modal_Form.js'
+import ModalBasket from './ModalBasket'
 
 
 export default function Buttons () {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)//for registration form
+    const [isOpenBasket, setIsOpenBasket] = useState(false)//for basket
     
     return (
     <div className ="buttons">
-        <Basket/>
+              <button className="btn" onClick={()=>setIsOpenBasket(true)}>Basket</button>
+              <ModalBasket open={isOpenBasket} onCloseBasket={() => setIsOpenBasket(false)}>DFDFD</ModalBasket>
+
             <button className="btn" onClick={()=>setIsOpen(true)}>Registration</button>
-            <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>
+            <ModalRegistration open={isOpen} onClose={() => setIsOpen(false)}></ModalRegistration>
     </div>
     )
 }

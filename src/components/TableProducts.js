@@ -1,5 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import Checkboxes from './Checkbox'
 
+function ListBeers({product}) {
+   
+    return (
+    <div className="card"> 
+        <div className="beer-name"> { product.name } </div>
+        <div className="beer-img"> <img src={ product.image_url }/> </div>
+        <div className="descr"> { product.description } </div>
+        <div className="addToBasket">Add to basket:<Checkboxes product={product}/></div>
+         {console.log(product.id)}
+    </div>
+    )
+} // for rendering
 
 function FindBeers({findBeer, paginate}){
     const [currentPage, setCurrentPage] = useState(1)//current page
@@ -21,16 +34,15 @@ function FindBeers({findBeer, paginate}){
         <div className="catalog">
             {
                    currentProd.map(beer => 
-                    <div className="card" key={ beer.id }> 
-                        <div className="beer-name"> { beer.name } </div>
-                        <div className="beer-img"> <img src={ beer.image_url }/> </div>
-                        <div className="descr"> { beer.description } </div>
-                    </div>)
+                     <ListBeers key={beer.id} product={beer}/>
+                    )
             }
+           
         </div>
     )
 }
-    
+
+
 function CatalogBeers({productsPagiante, value, findBeer, paginate}) {
     if(value!=""){
         return (<FindBeers findBeer={findBeer} paginate={paginate}/>)
@@ -38,12 +50,8 @@ function CatalogBeers({productsPagiante, value, findBeer, paginate}) {
    return (   
    <div className="catalog">
         {
-            productsPagiante.map(product => 
-                            <div className="card" key={ product.id }> 
-                                <div className="beer-name"> { product.name } </div>
-                                <div className="beer-img"> <img src={ product.image_url }/> </div>
-                                <div className="descr"> { product.description } </div>
-                            </div>
+            productsPagiante.map(product =>     
+                <ListBeers  key={ product.id } product={product} />
             )
         }
     </div>
@@ -62,3 +70,15 @@ export default function TableProducts( { productsPagiante, productsFind, loading
    )  
 }
 }
+
+// function ListBeers({product}) {
+//     return (
+//     <div className="card"> 
+//         <div className="beer-name"> { product.name } </div>
+//         <div className="beer-img"> <img src={ product.image_url }/> </div>
+//         <div className="descr"> { product.description } </div>
+//         <div className="addToBasket">Add to basket:<Checkboxes/></div>
+//          {console.log(product.id)}
+//     </div>
+//     )
+// }

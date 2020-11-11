@@ -62,7 +62,7 @@ function CheckMailUser({mail, setMailValue}){
 
 
 
-export default function Modal( {open, children, onClose} ) {
+export default function ModalRegistration( {open, children, onClose} ) {
     const [nameValue, setNameValue] = useState('')
     const [passValue, setPassValue] = useState('')
     const [dateValue, setDateValue] = useState('')

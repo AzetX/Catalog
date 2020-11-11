@@ -3,10 +3,13 @@ import React from 'react'
 
 
 function ListItem({paginate, page}) {
-    
+    function handleClick(event){
+        event.preventDefault()
+    }
+
    return ( 
      <li>
-         <a onClick={() => paginate(page)} href="!#" className="page-link"> {page} </a>
+         <a onClick={(event) => {paginate(page); handleClick(event)}} href="!#" className="page-link"> {page} </a>
      </li> 
    )
 }
@@ -32,24 +35,6 @@ export default function Pagination({productsPerPage, totalPosts, paginate, value
         </nav>
       
     )    
-}
+}//for rendering paginate
 
 
-   // if(pagesNumbers.length>=1 && value!=''){
-    //     return(
-    //         <ListFind pagesNumbers={pagesNumbers} paginate={paginate}/>
-    //     )
-    // }
-
-    // function ListFind({pagesNumbers, paginate}){  //when inpot has value rerender NUMBERS IS PAGINATION
-//     let findFilter = pagesNumbers.filter(i => i===1)
-//     return (
-//         <ul className="pagination">
-
-//         { findFilter.map(page => {
-//             return <ListItem key={page} className="page-beer" paginate={paginate} page={page} />
-//         }) }
-         
-//       </ul>
-//     )
-// }
