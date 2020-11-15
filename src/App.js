@@ -73,8 +73,6 @@ function App() {
   const findProduct = (findBeer) => {
     setValue(findBeer)
   }//не забудь вернуть стэйт
-  console.log(value)
-
 
   return (
     <div className="App">
@@ -84,7 +82,7 @@ function App() {
       <div className="main">
         <FindProduct products={getCurrentProd()[1]} currInput={value} findProduct={findProduct} setValue={setValue} setProductsPerPage={setProductsPerPage} />
         <Filter filter={filter} paginate={paginate} setValue={setValue}/>
-        <TableProducts productsPagiante={getCurrentProd()[0]} productsFind={getCurrentProd()[1]} loading={loading} value={value} paginate={paginate}/>
+        <TableProducts productsPagiante={getCurrentProd()[0]} productsFind={getCurrentProd()[1]} loading={loading} value={value} paginate={paginate} />
         <Pagination productsPerPage={productsPerPage} totalPosts={getCurrentProd()[1].length} paginate={paginate} value={value}/> 
 
       </div>
@@ -93,4 +91,6 @@ function App() {
   );
 }
 
-export default App;
+
+
+export default App

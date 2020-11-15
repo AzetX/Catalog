@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import Checkboxes from './Checkbox'
 
-function ListBeers({product}) {
-   
+
+export function ListBeers({product}) {
     return (
     <div className="card"> 
         <div className="beer-name"> { product.name } </div>
         <div className="beer-img"> <img src={ product.image_url }/> </div>
         <div className="descr"> { product.description } </div>
         <div className="addToBasket">Add to basket:<Checkboxes product={product}/></div>
-         {console.log(product.id)}
+   
     </div>
     )
 } // for rendering
 
-function FindBeers({findBeer, paginate}){
-    const [currentPage, setCurrentPage] = useState(1)//current page
-    const [productsPerPage, setProductsPerPage] = useState(6) 
+
+
+  
+
+function FindBeers ({findBeer}) {
+    const [currentPage] = useState(1)//current page
+    const [productsPerPage] = useState(6) 
 
     const indexOfLastProd = currentPage * productsPerPage//last post
     const indexOfFirstProd = indexOfLastProd - productsPerPage //first post
@@ -27,7 +31,6 @@ function FindBeers({findBeer, paginate}){
             pagesNumbers.push(i)
        
         } 
-       console.log(pagesNumbers)
 
     return (
      
@@ -43,10 +46,11 @@ function FindBeers({findBeer, paginate}){
 }
 
 
-function CatalogBeers({productsPagiante, value, findBeer, paginate}) {
+function CatalogBeers ({productsPagiante, value, findBeer}) {
     if(value!=""){
-        return (<FindBeers findBeer={findBeer} paginate={paginate}/>)
+        return (<FindBeers findBeer={findBeer}/>)
     }
+
    return (   
    <div className="catalog">
         {
@@ -58,27 +62,22 @@ function CatalogBeers({productsPagiante, value, findBeer, paginate}) {
 )
 }
 
-export default function TableProducts( { productsPagiante, productsFind, loading, value, paginate} ) {
+
+
+const TableProducts = ( { productsPagiante, productsFind, loading, value} ) => {
     if(loading) {
         return <div>LOADING...</div>
     }
-
-    {
+    
+    
     const findBeer = productsFind.filter(beer => beer.name.toLowerCase().includes(value.toLowerCase()))
+
     return (
         <CatalogBeers productsPagiante={productsPagiante} value={value} findBeer={findBeer}/>
    )  
-}
+
 }
 
-// function ListBeers({product}) {
-//     return (
-//     <div className="card"> 
-//         <div className="beer-name"> { product.name } </div>
-//         <div className="beer-img"> <img src={ product.image_url }/> </div>
-//         <div className="descr"> { product.description } </div>
-//         <div className="addToBasket">Add to basket:<Checkboxes/></div>
-//          {console.log(product.id)}
-//     </div>
-//     )
-// }
+
+
+export default TableProducts

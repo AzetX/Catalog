@@ -1,5 +1,9 @@
+import { Checkbox } from '@material-ui/core'
 import React, { useState } from 'react'
 import ReactDom from 'react-dom'
+import { connect } from 'react-redux'
+import { addToBasket } from '../redux/actions'
+import { deleteProductsFromBasket } from '../redux/actions'
 
 
 const MODAL_STYLES = {
@@ -9,6 +13,8 @@ const MODAL_STYLES = {
     transform: 'translate(-50%, -50%)',
     backgroundColor: 'white',
     padding: '50px',
+    maxHeight: '100vh',
+    overflow: 'scroll',
     zIndex: 1000
 }
 
@@ -20,19 +26,50 @@ const OVERLAY_STYLE = {
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, .7)',
     zIndex: 1000
+}
 
+function ProductList ({ product, deleteProductsFromBasket}){
+  const [productList, setProductList] = useState(product)
+
+  const refCheched = React.createRef(); // for checkbox
+
+  function handleClick(){
+    deleteProductsFromBasket(product)
+    setProductList(product)
+  }
+
+
+  return (
+
+    <div className="card">
+    
+        <div className="beer-name"> { product.name } </div>
+        <div className="beer-img"> <img src={ product.image_url }/> </div>
+        <div className="descr"> { product.description } </div>
+        <button className="removeFromBasket" onClick={handleClick} refCheched={refCheched}>Remove</button>
+    </div>
+  )
 }
 
 
-export default function MdalBasket( {open, children, onCloseBasket} ) {
+ const ModalBasket = ( {open, onCloseBasket, deleteProductsFromBasket, basket, checked} ) => {
     if(!open) return null
- 
+
+
+    // console.log(componentRef)
     return ReactDom.createPortal(
-      <> 
-        <div style={OVERLAY_STYLE} onClick={onCloseBasket}/>      
+      <>
+        <div style={OVERLAY_STYLE} onClick={onCloseBasket} />      
         <div style={MODAL_STYLES}>
-        <div>{children}</div>
+        <div className="catalog">
+        {
+          basket.map(product => 
+            <ProductList product={product} key={product.id} deleteProductsFromBasket={deleteProductsFromBasket} checked={checked}/> 
+         )
+        }
+        </div>
         <button onClick={onCloseBasket}>&#10060;</button>
+        
         </div>
         
       </>,
@@ -40,3 +77,19 @@ export default function MdalBasket( {open, children, onCloseBasket} ) {
     )
 }
 
+
+
+const mapStateToProps = state => {
+  return {
+    basket: state.productsBasket.basket
+    // checked: state.productsBasket.checked
+  }
+}
+
+const mapDispatchToProps  = {
+  addToBasket: addToBasket, 
+  deleteProductsFromBasket: deleteProductsFromBasket
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalBasket)
