@@ -25,7 +25,7 @@ const OVERLAY_STYLE = {
 function CheckNameUser({username, setNameValue}){
     return (
         <div className="username">
-        <input type="text" placeholder="Full name..."  id="inputUsername" onChange={e => setNameValue(e.target.value)}/>
+        <input type="text" placeholder="Full name..."  id="inputUsername" onChange={({target}) => setNameValue(target.value)}/>
         <label htmlFor="inputUsername" style={{color: username ? 'green' : 'red' }}>{(username) ?'✔':'✖' }</label> 
         </div>
     )}
@@ -35,7 +35,7 @@ function CheckDateOfBirthUser({dateOfBirth, setDateValue}){
   
     return (
         <div className="birthday">
-        <input type="Date" id="inputBirthday" onChange={e => setDateValue(e.target.value)}/>
+        <input type="Date" id="inputBirthday" onChange={({target}) => {setDateValue(target.value)}}/>
         <label htmlFor="inputBirthday" style={{color: dateOfBirth ? 'green' : 'red' }}>{(dateOfBirth) ?'✔': '✖' }</label> 
         </div>
     )
@@ -44,7 +44,7 @@ function CheckDateOfBirthUser({dateOfBirth, setDateValue}){
 function CheckPasswordUser({password, setPassValue}){
     return (
         <div className="userPassword">
-        <input type="password" id="inputPassword" placeholder="Password..." onChange={e => setPassValue(e.target.value)}/>
+        <input type="password" id="inputPassword" placeholder="Password..." onChange={({target})  => {setPassValue(target.value)}}/>
         <label htmlFor="inputPassword" style={{color: password ? 'green' : 'red' }}>{(password) ? '✔': '✖'}</label> 
         </div>
     )
@@ -53,7 +53,7 @@ function CheckMailUser({mail, setMailValue}){
 
     return (
         <div className="userEmail">
-        <input type="email" id="inputEmail" placeholder="E-mail..."onChange={e => setMailValue(e.target.value)}/ >
+        <input type="email" id="inputEmail" placeholder="E-mail..." onChange={({target}) => {setMailValue(target.value)}}/>
         <label htmlFor="inputEmail" style={{color: mail ? 'green' : 'red' }}>{(mail)? '✔': '✖'}</label> 
         </div>
     )   

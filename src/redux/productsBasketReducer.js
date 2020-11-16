@@ -5,11 +5,11 @@ const initialState = {
     basket: [],
     checked: false
 }
-//or checkboxes
+
 export const basketReducer = (state = initialState, action) => {
     switch (action.type){
         case ADD_TO_BASKET: 
-            return {...state, basket: state.basket.concat([action.payload]), checked: true} // возращаем копию стейта, 2 параметр
+            return {...state, basket: state.basket.concat([action.payload]), checked: true} 
         case REMOVE_FROM_BASKET:
             return {...state, basket: state.basket.filter(product => action.payload !== product), checked: false}
         default: return state

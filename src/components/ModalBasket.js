@@ -1,4 +1,3 @@
-import { Checkbox } from '@material-ui/core'
 import React, { useState } from 'react'
 import ReactDom from 'react-dom'
 import { connect } from 'react-redux'
@@ -30,8 +29,6 @@ const OVERLAY_STYLE = {
 
 function ProductList ({ product, deleteProductsFromBasket}){
   const [productList, setProductList] = useState(product)
-
-  // const refChecked = React.createRef(); // for checkbox
 
   function handleClick(){
 

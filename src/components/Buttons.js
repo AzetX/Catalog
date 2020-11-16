@@ -5,8 +5,8 @@ import ModalBasket from './ModalBasket'
 
 
  const Buttons = () => {
-    const [isOpen, setIsOpen] = useState(false)//for registration form
-    const [isOpenBasket, setIsOpenBasket] = useState(false)//for basket
+    const [isOpen, setIsOpen] = useState(false)
+    const [isOpenBasket, setIsOpenBasket] = useState(false)
 
     
     return (

@@ -14,19 +14,18 @@ export function ListBeers({product}) {
    
     </div>
     )
-} // for rendering
-
+} 
 
 
   
 
 function FindBeers ({findBeer}) {
-    const [currentPage] = useState(1)//current page
+    const [currentPage] = useState(1)
     const [productsPerPage] = useState(6) 
 
-    const indexOfLastProd = currentPage * productsPerPage//last post
-    const indexOfFirstProd = indexOfLastProd - productsPerPage //first post
-    const currentProd = findBeer.slice(indexOfFirstProd, indexOfLastProd)//kol product on page
+    const indexOfLastProd = currentPage * productsPerPage
+    const indexOfFirstProd = indexOfLastProd - productsPerPage 
+    const currentProd = findBeer.slice(indexOfFirstProd, indexOfLastProd)
         const pagesNumbers = []
   
         for(let i = 1; i <= Math.ceil(currentProd.length / productsPerPage); i++){

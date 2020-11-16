@@ -35,6 +35,6 @@ export default function Pagination({productsPerPage, totalPosts, paginate, value
         </nav>
       
     )    
-}//for rendering paginate
+}
 
 

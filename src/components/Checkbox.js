@@ -5,17 +5,13 @@ import { addToBasket } from '../redux/actions'
 import { deleteProductsFromBasket } from '../redux/actions'
 
 
-
-
-
-
-const Checkboxes = ({product, addToBasket, deleteProductsFromBasket}) => { // checked param
+const Checkboxes = ({product, addToBasket, deleteProductsFromBasket}) => { 
   
   const [checked, setChecked] = useState(false);
   
-  const handleChange = (event) => {
+  const handleChange = ({ target }) => {
    
-    if(event.target.checked === true){
+    if(target.checked === true){
       addToBasket(product)
 
     }
@@ -24,7 +20,7 @@ const Checkboxes = ({product, addToBasket, deleteProductsFromBasket}) => { // ch
      
     }
   
-    setChecked(event.target.checked);
+    setChecked(target.checked);
 
   };
   
@@ -43,7 +39,7 @@ const Checkboxes = ({product, addToBasket, deleteProductsFromBasket}) => { // ch
 
 
 
-const mapStateToProps = state => { //преобразовывает весь стейт в пропсы
+const mapStateToProps = state => { 
   return {    
       productsBasket: state.productsBasket.basket,
       checked: state.productsBasket.checked
