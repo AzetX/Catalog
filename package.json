@@ -1,8 +1,8 @@
 {
-  "name": "catalog",
+  "homepage": "https://azetx.github.io/catalog",
+  "name": "Catalog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://azetx.github.io/catalog/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^5.11.5",
