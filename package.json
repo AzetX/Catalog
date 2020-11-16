@@ -1,6 +1,6 @@
 {
-  "homepage": "https://azetx.github.io/catalog",
-  "name": "Catalog",
+  "homepage": "https://azetx.github.io/Catalog",
+  "name": "catalog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
