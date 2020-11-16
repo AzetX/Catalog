@@ -6,9 +6,11 @@ export function ListBeers({product}) {
     return (
     <div className="card"> 
         <div className="beer-name"> { product.name } </div>
-        <div className="beer-img"> <img src={ product.image_url }/> </div>
+        <div className="beer-img"> 
+        <img src={ product.image_url }/> 
+        </div>
         <div className="descr"> { product.description } </div>
-        <div className="addToBasket">Add to basket:<Checkboxes product={product}/></div>
+        <div className="addToBasket">Add to basket <Checkboxes product={product}/></div>
    
     </div>
     )

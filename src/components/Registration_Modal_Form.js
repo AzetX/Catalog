@@ -7,9 +7,8 @@ const MODAL_STYLES = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#FFF',
-    padding: '50px',
-    zIndex: 1000,
-
+    padding: '150px',
+    zIndex: 1000
 }
 
 const OVERLAY_STYLE = {
@@ -45,7 +44,7 @@ function CheckDateOfBirthUser({dateOfBirth, setDateValue}){
 function CheckPasswordUser({password, setPassValue}){
     return (
         <div className="userPassword">
-        <input type="password" id="inputPassword" onChange={e => setPassValue(e.target.value)}/>
+        <input type="password" id="inputPassword" placeholder="Password..." onChange={e => setPassValue(e.target.value)}/>
         <label htmlFor="inputPassword" style={{color: password ? 'green' : 'red' }}>{(password) ? '✔': '✖'}</label> 
         </div>
     )
@@ -54,7 +53,7 @@ function CheckMailUser({mail, setMailValue}){
 
     return (
         <div className="userEmail">
-        <input type="email" id="inputEmail" onChange={e => setMailValue(e.target.value)}/>
+        <input type="email" id="inputEmail" placeholder="E-mail..."onChange={e => setMailValue(e.target.value)}/ >
         <label htmlFor="inputEmail" style={{color: mail ? 'green' : 'red' }}>{(mail)? '✔': '✖'}</label> 
         </div>
     )   
@@ -93,14 +92,17 @@ export default function ModalRegistration( {open, children, onClose} ) {
     return ReactDom.createPortal(
       <> 
         <div style={OVERLAY_STYLE} onClick={onClose}/>      
-        <div style={MODAL_STYLES}>
+        <div style={MODAL_STYLES} >
+        <div className="contentForm">
+        <h1 className="titleFrom">Form registration</h1>
         <CheckNameUser setNameValue={setNameValue} username={username}/>
         <CheckDateOfBirthUser setDateValue={setDateValue} dateOfBirth={dateOfBirth}/>
         <CheckPasswordUser setPassValue={setPassValue} password={password}/>
         <CheckMailUser setMailValue={setMailValue} mail={mail} />
-        <button onClick={checkData}>Follow</button>
-        <button onClick={onClose}>&#10060;</button>
+        <button onClick={checkData} className="registrationButton">Follow</button>
+        <button onClick={onClose} className="registrationButton">Close</button>
         <div>{children}</div>
+        </div>
         </div>
         
       </>,

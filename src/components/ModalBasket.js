@@ -14,7 +14,7 @@ const MODAL_STYLES = {
     backgroundColor: 'white',
     padding: '50px',
     maxHeight: '100vh',
-    overflow: 'scroll',
+    overflow: 'auto',
     zIndex: 1000
 }
 
@@ -31,9 +31,10 @@ const OVERLAY_STYLE = {
 function ProductList ({ product, deleteProductsFromBasket}){
   const [productList, setProductList] = useState(product)
 
-  const refCheched = React.createRef(); // for checkbox
+  // const refChecked = React.createRef(); // for checkbox
 
   function handleClick(){
+
     deleteProductsFromBasket(product)
     setProductList(product)
   }
@@ -42,11 +43,11 @@ function ProductList ({ product, deleteProductsFromBasket}){
   return (
 
     <div className="card">
-    
+ 
         <div className="beer-name"> { product.name } </div>
         <div className="beer-img"> <img src={ product.image_url }/> </div>
         <div className="descr"> { product.description } </div>
-        <button className="removeFromBasket" onClick={handleClick} refCheched={refCheched}>Remove</button>
+        <button className="removeFromBasket" onClick={handleClick} >Remove</button>
     </div>
   )
 }
@@ -55,12 +56,10 @@ function ProductList ({ product, deleteProductsFromBasket}){
  const ModalBasket = ( {open, onCloseBasket, deleteProductsFromBasket, basket, checked} ) => {
     if(!open) return null
 
-
-    // console.log(componentRef)
     return ReactDom.createPortal(
       <>
         <div style={OVERLAY_STYLE} onClick={onCloseBasket} />      
-        <div style={MODAL_STYLES}>
+        <div style={ MODAL_STYLES }>
         <div className="catalog">
         {
           basket.map(product => 
@@ -68,7 +67,7 @@ function ProductList ({ product, deleteProductsFromBasket}){
          )
         }
         </div>
-        <button onClick={onCloseBasket}>&#10060;</button>
+        <button onClick={onCloseBasket} className="closeBasket">Close</button>
         
         </div>
         
@@ -81,8 +80,8 @@ function ProductList ({ product, deleteProductsFromBasket}){
 
 const mapStateToProps = state => {
   return {
-    basket: state.productsBasket.basket
-    // checked: state.productsBasket.checked
+    basket: state.productsBasket.basket,
+    checked: state.productsBasket.checked
   }
 }
 

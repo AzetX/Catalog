@@ -5,6 +5,10 @@ import { addToBasket } from '../redux/actions'
 import { deleteProductsFromBasket } from '../redux/actions'
 
 
+
+
+
+
 const Checkboxes = ({product, addToBasket, deleteProductsFromBasket}) => { // checked param
   
   const [checked, setChecked] = useState(false);
@@ -13,24 +17,25 @@ const Checkboxes = ({product, addToBasket, deleteProductsFromBasket}) => { // ch
    
     if(event.target.checked === true){
       addToBasket(product)
+
     }
     else {
       deleteProductsFromBasket(product)
+     
     }
   
     setChecked(event.target.checked);
-  
-   
+
   };
   
-
   return (
     <div>
      
       <Checkbox
         checked={checked}
         onChange={handleChange}
-        inputProps={{ 'aria-label': 'primary checkbox' }}
+        inputProps={{ 'aria-label': 'primary checkbox' }
+      }
       />
     </div>
   );
@@ -40,8 +45,8 @@ const Checkboxes = ({product, addToBasket, deleteProductsFromBasket}) => { // ch
 
 const mapStateToProps = state => { //преобразовывает весь стейт в пропсы
   return {    
-      productsBasket: state.productsBasket.basket
-      // checked: state.productsBasket.checked
+      productsBasket: state.productsBasket.basket,
+      checked: state.productsBasket.checked
   }
 }
 

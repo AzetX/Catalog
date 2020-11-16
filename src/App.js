@@ -16,6 +16,7 @@ function App() {
   const [value, setValue] = useState('')//input
   
   
+
   useEffect(() => {
       const fetchProducts = async () => {
           setLoading(true)
@@ -82,7 +83,7 @@ function App() {
       <div className="main">
         <FindProduct products={getCurrentProd()[1]} currInput={value} findProduct={findProduct} setValue={setValue} setProductsPerPage={setProductsPerPage} />
         <Filter filter={filter} paginate={paginate} setValue={setValue}/>
-        <TableProducts productsPagiante={getCurrentProd()[0]} productsFind={getCurrentProd()[1]} loading={loading} value={value} paginate={paginate} />
+        <TableProducts productsPagiante={getCurrentProd()[0]} productsFind={getCurrentProd()[1]} loading={loading} value={value} paginate={paginate}/>
         <Pagination productsPerPage={productsPerPage} totalPosts={getCurrentProd()[1].length} paginate={paginate} value={value}/> 
 
       </div>
